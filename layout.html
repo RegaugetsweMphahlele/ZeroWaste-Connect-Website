@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZeroWaste Layout</title>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    :root {
+      --primary-red: #EF4444;
+      --primary-green: #22C55E;
+      --primary-yellow: #FCD34D;
+      --warm-red: #FEF2F2;
+      --warm-green: #F0FDF4;
+      --warm-yellow: #FFFBEB;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, var(--warm-green), var(--warm-yellow), var(--warm-red));
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary-red), var(--primary-green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(156, 163, 175, 0.5);
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #EF4444, #22C55E);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+    }
+
+    nav.desktop {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav.desktop a {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    nav.desktop a.active {
+      color: #EF4444;
+      background: #FEE2E2;
+    }
+
+    nav.desktop a:hover {
+      color: #EF4444;
+      background: #FEE2E2;
+    }
+
+    .auth-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      border-top: 1px solid #D1D5DB;
+      padding: 0.5rem 0;
+    }
+
+    .mobile-nav a {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .mobile-nav a.active {
+      color: #EF4444;
+      background: #FEE2E2;
+    }
+
+    .mobile-nav a:hover {
+      color: #EF4444;
+      background: #FEE2E2;
+    }
+
+    main {
+      padding: 2rem 1rem;
+    }
+
+    footer {
+      background: #111827;
+      color: white;
+      padding: 2rem 1rem;
+    }
+
+    footer a {
+      color: #D1D5DB;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav.desktop {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: inline-block;
+      }
+
+      .mobile-nav.show {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon"><i data-feather="heart" style="color:white"></i></div>
+    <span class="gradient-text" style="font-size:1.5rem; font-weight:bold;">ZeroWaste</span>
+  </div>
+
+  <nav class="desktop" id="desktopNav"></nav>
+
+  <div class="auth-buttons" id="authButtons"></div>
+
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i data-feather="menu"></i>
+  </button>
+</header>
+
+<nav class="mobile-nav" id="mobileNav"></nav>
+
+<main>
+  <h1>Welcome to ZeroWaste</h1>
+  <p>This is the main content area.</p>
+</main>
+
+<footer>
+  <div>
+    <div class="logo" style="gap:0.5rem; margin-bottom:1rem;">
+      <div class="logo-icon"><i data-feather="heart" style="color:white"></i></div>
+      <span style="font-size:1.25rem; font-weight:bold;">ZeroWaste</span>
+    </div>
+    <p>Connecting communities to reduce food waste while ensuring everyone has access to nutritious meals.</p>
+    <p style="margin-top:1rem;">Contact: help@zerowaste.com | 1-800-ZERO-WASTE</p>
+  </div>
+</footer>
+
+<script>
+  feather.replace();
+
+  const navigationItems = [
+    { title: "Home", url: "#home", icon: "home" },
+    { title: "How It Works", url: "#howitworks", icon: "book" },
+    { title: "Impact", url: "#impact", icon: "trending-up" },
+    { title: "Resources", url: "#resources", icon: "users" },
+    { title: "About", url: "#about", icon: "info" },
+  ];
+
+  const desktopNav = document.getElementById("desktopNav");
+  const mobileNav = document.getElementById("mobileNav");
+  const authButtons = document.getElementById("authButtons");
+  const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+
+  // Generate navigation
+  navigationItems.forEach(item => {
+    const link = document.createElement("a");
+    link.href = item.url;
+    link.innerHTML = `<i data-feather="${item.icon}"></i> ${item.title}`;
+    if (window.location.hash === item.url) link.classList.add("active");
+    desktopNav.appendChild(link);
+
+    const mobileLink = link.cloneNode(true);
+    if (window.location.hash === item.url) mobileLink.classList.add("active");
+    mobileLink.addEventListener("click", () => mobileNav.classList.remove("show"));
+    mobileNav.appendChild(mobileLink);
+  });
+
+  feather.replace();
+
+  // Simulated user auth
+  let user = null; // Change to object {full_name:"Sarah"} to simulate logged in
+  function renderAuth() {
+    authButtons.innerHTML = "";
+    if (user) {
+      const span = document.createElement("span");
+      span.textContent = user.full_name;
+      authButtons.appendChild(span);
+
+      const btn = document.createElement("button");
+      btn.textContent = "Sign Out";
+      btn.onclick = () => { user = null; renderAuth(); };
+      authButtons.appendChild(btn);
+    } else {
+      const btn = document.createElement("button");
+      btn.textContent = "Sign In";
+      btn.onclick = () => { user = { full_name: "Sarah" }; renderAuth(); };
+      authButtons.appendChild(btn);
+    }
+  }
+  renderAuth();
+
+  // Mobile menu toggle
+  mobileMenuBtn.addEventListener("click", () => {
+    mobileNav.classList.toggle("show");
+  });
+</script>
+
+</body>
+</html>

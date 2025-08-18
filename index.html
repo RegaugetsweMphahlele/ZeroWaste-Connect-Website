@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZeroWaste - Home</title>
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #fef2f2;
+      color: #333;
+    }
+
+    a { text-decoration: none; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #EF4444, #22C55E);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .card-shadow {
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #FEF2F2, #F0FDF4, #FFFBEB);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      width: 100%;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(200,200,200,0.5);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #EF4444, #22C55E);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      color: white;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      color: #555;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    nav a:hover {
+      color: #EF4444;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: 0.3s;
+    }
+
+    .btn-gradient-red {
+      background: linear-gradient(135deg, #EF4444, #DC2626);
+      color: white;
+    }
+
+    .btn-gradient-green {
+      background: linear-gradient(135deg, #22C55E, #16A34A);
+      color: white;
+    }
+
+    .btn-outline {
+      background: white;
+      border: 1px solid #ccc;
+      color: #555;
+    }
+
+    section {
+      padding: 6rem 1rem;
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .features, .testimonials, .impact-stats {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .features { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .testimonials { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .impact-stats { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); text-align: center; }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card i {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #EF4444;
+    }
+
+    .impact-stats .stat-value {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-section {
+      text-align: center;
+      color: white;
+      background: linear-gradient(135deg, #EF4444, #22C55E);
+      padding: 6rem 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #111;
+      color: #ccc;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 350px; /* Reduced from 400px */
+      padding: 1.5rem; /* Reduced from 2rem */
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #555;
+    }
+
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .auth-form h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem; /* Slightly smaller heading */
+    }
+
+    .auth-form p {
+      text-align: center;
+      margin-bottom: 1rem; /* Reduced from 1.5rem */
+      color: #555;
+      font-size: 0.9rem; /* Slightly smaller text */
+    }
+
+    .form-group {
+      margin-bottom: 0.75rem; /* Reduced from 1rem */
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.25rem; /* Reduced from 0.5rem */
+      font-weight: 500;
+      font-size: 0.9rem; /* Slightly smaller labels */
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.6rem; /* Reduced from 0.75rem */
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.9rem; /* Slightly smaller input text */
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 1rem 0; /* Reduced from 1.5rem */
+      color: #777;
+      font-size: 0.8rem;
+    }
+
+    .divider::before, .divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .divider::before {
+      margin-right: 0.5rem;
+    }
+
+    .divider::after {
+      margin-left: 0.5rem;
+    }
+
+    .google-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.6rem; /* Reduced from 0.75rem */
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%;
+      font-size: 0.9rem; /* Slightly smaller text */
+    }
+
+    .auth-footer {
+      text-align: center;
+      margin-top: 1rem; /* Reduced from 1.5rem */
+      font-size: 0.8rem;
+    }
+
+    .auth-footer a {
+      color: #EF4444;
+      font-weight: 500;
+    }
+
+    .auth-tabs {
+      display: flex;
+      margin-bottom: 1rem; /* Reduced from 1.5rem */
+      border-bottom: 1px solid #ddd;
+    }
+
+    .auth-tab {
+      flex: 1;
+      text-align: center;
+      padding: 0.5rem; /* Reduced from 0.75rem */
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .auth-tab.active {
+      border-bottom: 2px solid #EF4444;
+      color: #EF4444;
+    }
+
+    /* Hidden class for toggling between forms */
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">♥</div>
+        <span class="gradient-text">ZeroWaste</span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="howitworks.html">How It Works</a>
+        <a href="impact.html">Impact</a>
+        <a href="resources.html">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient">
+    <div class="container hero-text">
+      <h1>End Food Waste.<span class="gradient-text block">Feed Communities.</span></h1>
+      <p>Connect with local restaurants and food donors to access fresh, nutritious meals while reducing food waste in your community.</p>
+      <button class="btn btn-gradient-red" id="loginBtn">Get Started Today</button>
+      <button class="btn btn-outline" id="howItWorksBtn">Learn How It Works →</button>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section>
+    <h2 style="text-align:center;margin-bottom:2rem;">How ZeroWaste Works</h2>
+    <div class="container features">
+      <div class="card">
+        <i>👥</i>
+        <h3>Connect Communities</h3>
+        <p>Bridge the gap between food donors and those in need</p>
+      </div>
+      <div class="card">
+        <i>🛡️</i>
+        <h3>Safe & Verified</h3>
+        <p>All donations are tracked and verified for safety</p>
+      </div>
+      <div class="card">
+        <i>⏰</i>
+        <h3>Real-time Updates</h3>
+        <p>Get instant notifications about available food</p>
+      </div>
+      <div class="card">
+        <i>📍</i>
+        <h3>Location-based</h3>
+        <p>Find food assistance and donors near you</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Stats Section -->
+  <section style="background: linear-gradient(135deg, #F0FDF4, #FFFBEB);">
+    <h2 style="text-align:center;margin-bottom:2rem;">Our Community Impact</h2>
+    <div class="container impact-stats">
+      <div>
+        <div class="stat-value">10,000+</div>
+        <div>Meals Rescued</div>
+      </div>
+      <div>
+        <div class="stat-value">500+</div>
+        <div>Food Donors</div>
+      </div>
+      <div>
+        <div class="stat-value">50+</div>
+        <div>Communities Served</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <h2>Ready to Make a Difference?</h2>
+    <p>Join thousands of community members working together to end food waste and hunger.</p>
+    <button class="btn btn-gradient-green" id="signupBtn">Join ZeroWaste</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    hello@zerowaste.com | 1-800-ZERO-WASTE
+    <br>&copy; 2024 ZeroWaste. Together, we can end food waste and hunger.
+  </footer>
+
+  <!-- Auth Modal -->
+  <div class="modal" id="authModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      
+      <div class="auth-tabs">
+        <div class="auth-tab active" id="signinTab">Sign In</div>
+        <div class="auth-tab" id="signupTab">Sign Up</div>
+      </div>
+
+      <!-- Sign In Form -->
+      <div class="auth-form" id="signinForm">
+        <h2>Welcome to ZeroWaste Connect</h2>
+        <p>Sign in to continue</p>
+        
+        <button class="google-btn">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.64 9.2045C17.64 8.5663 17.5827 7.9527 17.4764 7.3636H9V10.845H13.8436C13.635 11.97 13.0009 12.9231 12.0477 13.5613V15.8195H14.9564C16.6582 14.2527 17.64 11.9454 17.64 9.2045Z" fill="#4285F4"/>
+            <path d="M9 18C11.43 18 13.4673 17.1941 14.9564 15.8195L12.0477 13.5613C11.2418 14.1013 10.2109 14.4204 9 14.4204C6.65591 14.4204 4.67182 12.8372 3.96409 10.71H0.957275V13.0418C2.43818 15.9831 5.48182 18 9 18Z" fill="#34A853"/>
+            <path d="M3.96409 10.71C3.78409 10.17 3.68182 9.5931 3.68182 9C3.68182 8.4069 3.78409 7.83 3.96409 7.29V4.9582H0.957273C0.347727 6.1731 0 7.5477 0 9C0 10.4523 0.347727 11.8269 0.957273 13.0418L3.96409 10.71Z" fill="#FBBC05"/>
+            <path d="M9 3.57955C10.3214 3.57955 11.5077 4.03364 12.4405 4.92545L15.0218 2.34409C13.4632 0.891818 11.4259 0 9 0C5.48182 0 2.43818 2.01682 0.957275 4.95818L3.96409 7.29C4.67182 5.16273 6.65591 3.57955 9 3.57955Z" fill="#EA4335"/>
+          </svg>
+          Continue with Google
+        </button>
+        
+        <div class="divider">OR</div>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com">
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="••••••••">
+        </div>
+        
+        <button class="btn btn-gradient-red">Sign In</button>
+        
+        <div class="auth-footer">
+          <a href="#" id="forgotPassword">Forgot password?</a> | 
+          <a href="#" id="showSignup">Need an account? Sign up</a>
+        </div>
+      </div>
+
+      <!-- Sign Up Form -->
+      <div class="auth-form hidden" id="signupForm">
+        <h2>Create your account</h2>
+        <p>Join ZeroWaste to start making a difference</p>
+        
+        <div class="form-group">
+          <label for="signupEmail">Email</label>
+          <input type="email" id="signupEmail" placeholder="you@example.com">
+        </div>
+        
+        <div class="form-group">
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" placeholder="Min. 8 characters">
+        </div>
+        
+        <div class="form-group">
+          <label for="confirmPassword">Re-enter password</label>
+          <input type="password" id="confirmPassword" placeholder="Re-enter password">
+        </div>
+        
+        <button class="btn btn-gradient-red">Sign Up</button>
+        
+        <div class="auth-footer">
+          <a href="#" id="showSignin">Back to sign in</a>
+        </div>
+      </div>
+
+      <!-- Forgot Password Form -->
+      <div class="auth-form hidden" id="forgotForm">
+        <h2>Reset your password</h2>
+        <p>Enter your email and we'll send you a link to reset your password</p>
+        
+        <div class="form-group">
+          <label for="resetEmail">Email</label>
+          <input type="email" id="resetEmail" placeholder="you@example.com">
+        </div>
+        
+        <button class="btn btn-gradient-red">Send reset link</button>
+        
+        <div class="auth-footer">
+          <a href="#" id="backToSignin">Back to sign in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Modal functionality
+    const modal = document.getElementById('authModal');
+    const loginBtn = document.getElementById('loginBtn');
+    const signupBtn = document.getElementById('signupBtn');
+    const howItWorksBtn = document.getElementById('howItWorksBtn');
+    const closeModal = document.getElementById('closeModal');
+    const showSignup = document.getElementById('showSignup');
+    const showSignin = document.getElementById('showSignin');
+    const forgotPassword = document.getElementById('forgotPassword');
+    const backToSignin = document.getElementById('backToSignin');
+    const signinTab = document.getElementById('signinTab');
+    const signupTab = document.getElementById('signupTab');
+    
+    const signinForm = document.getElementById('signinForm');
+    const signupForm = document.getElementById('signupForm');
+    const forgotForm = document.getElementById('forgotForm');
+
+    // Open modal when login button is clicked (shows sign in form)
+    loginBtn.addEventListener('click', () => {
+      modal.style.display = 'flex';
+      showSigninForm();
+    });
+
+    // Open modal when signup button is clicked (shows sign up form)
+    signupBtn.addEventListener('click', () => {
+      modal.style.display = 'flex';
+      showSignupForm();
+      signinTab.classList.remove('active');
+      signupTab.classList.add('active');
+    });
+
+    // Redirect how it works button
+    howItWorksBtn.addEventListener('click', () => {
+      window.location.href = 'howitworks.html';
+    });
+
+    // Close modal
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Show sign up form
+    showSignup.addEventListener('click', (e) => {
+      e.preventDefault();
+      showSignupForm();
+      signinTab.classList.remove('active');
+      signupTab.classList.add('active');
+    });
+
+    // Show sign in form
+    showSignin.addEventListener('click', (e) => {
+      e.preventDefault();
+      showSigninForm();
+      signinTab.classList.add('active');
+      signupTab.classList.remove('active');
+    });
+
+    // Show forgot password form
+    forgotPassword.addEventListener('click', (e) => {
+      e.preventDefault();
+      signinForm.classList.add('hidden');
+      signupForm.classList.add('hidden');
+      forgotForm.classList.remove('hidden');
+      signinTab.classList.remove('active');
+      signupTab.classList.remove('active');
+    });
+
+    // Back to sign in from forgot password
+    backToSignin.addEventListener('click', (e) => {
+      e.preventDefault();
+      showSigninForm();
+      signinTab.classList.add('active');
+      signupTab.classList.remove('active');
+    });
+
+    // Tab switching
+    signinTab.addEventListener('click', () => {
+      showSigninForm();
+      signinTab.classList.add('active');
+      signupTab.classList.remove('active');
+    });
+
+    signupTab.addEventListener('click', () => {
+      showSignupForm();
+      signinTab.classList.remove('active');
+      signupTab.classList.add('active');
+    });
+
+    function showSigninForm() {
+      signinForm.classList.remove('hidden');
+      signupForm.classList.add('hidden');
+      forgotForm.classList.add('hidden');
+    }
+
+    function showSignupForm() {
+      signinForm.classList.add('hidden');
+      signupForm.classList.remove('hidden');
+      forgotForm.classList.add('hidden');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZeroWaste - Resources & Support</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom right, #ECFDF5, #FEF9C3, #FEE2E2);
+      color: #333;
+    }
+
+    a { text-decoration: none; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #EF4444, #22C55E);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(200,200,200,0.5);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #EF4444, #22C55E);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      color: white;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      color: #555;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    nav a:hover {
+      color: #EF4444;
+    }
+
+    h1, h2, h3, h4 { margin: 0.5rem 0; }
+    h1 { font-size: 3rem; font-weight: bold; }
+    h2 { font-size: 2.25rem; font-weight: bold; }
+    h3 { font-size: 1.5rem; font-weight: bold; }
+    h4 { font-size: 1.125rem; font-weight: bold; }
+
+    p { font-size: 1.125rem; line-height: 1.6; color: #555; }
+
+    .text-center { text-align: center; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #EF4444, #22C55E);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .grid { display: grid; gap: 2rem; }
+    .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+    @media (min-width: 768px) { .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .lg\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); } }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); }
+
+    .icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: white;
+    }
+
+    .bg-gradient { background: linear-gradient(135deg, #FEE2E2, #DCFCE7); color: #B91C1C; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 1px solid #B91C1C;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      background: transparent;
+      color: #B91C1C;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn:hover { background: #FEE2E2; }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: #DCFCE7;
+      color: #15803D;
+      margin-left: 0.5rem;
+    }
+
+    .section { padding: 6rem 2rem; }
+    .bg-white { background: white; }
+    .bg-gray { background: #111; color: #fff; }
+    .text-white { color: #fff; }
+
+    .number-circle {
+      width: 24px; height: 24px;
+      background: #DCFCE7;
+      color: #15803D;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+  </style>
+</head>
+<body>
+
+    <!-- Header -->
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">♥</div>
+        <span class="gradient-text">ZeroWaste</span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="howitworks.html">How It Works</a>
+        <a href="impact.html">Impact</a>
+        <a href="resources.html">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="section text-center">
+    <h1><span class="gradient-text">Resources</span> & Support</h1>
+    <p>Everything you need to safely donate and receive food through ZeroWaste, plus additional community resources and support.</p>
+  </section>
+
+  <!-- Resource Categories -->
+  <section class="section bg-white">
+    <div class="grid grid-cols-1 lg:grid-cols-3">
+      <!-- Food Safety -->
+      <div class="card">
+        <div class="flex items-center mb-4">
+          <div class="icon-circle bg-gradient">⚠️</div>
+          <h3 style="margin-left:0.75rem;">Food Safety</h3>
+        </div>
+        <div class="space-y-4">
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <div class="flex justify-between mb-2">
+              <h4>Food Safety Guidelines for Donors</h4>
+              <span class="badge">PDF Guide</span>
+            </div>
+            <p>Essential safety protocols for restaurants and food businesses donating surplus food.</p>
+            <button class="btn">⬇️ Download Resource</button>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <div class="flex justify-between mb-2">
+              <h4>Safe Food Handling for Recipients</h4>
+              <span class="badge">Quick Reference</span>
+            </div>
+            <p>Best practices for safely storing and consuming donated food items.</p>
+            <button class="btn">⬇️ Download Resource</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal Information -->
+      <div class="card">
+        <div class="flex items-center mb-4">
+          <div class="icon-circle bg-gradient">📖</div>
+          <h3 style="margin-left:0.75rem;">Legal Information</h3>
+        </div>
+        <div class="space-y-4">
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <div class="flex justify-between mb-2">
+              <h4>Good Samaritan Food Donation Act</h4>
+              <span class="badge">Legal Guide</span>
+            </div>
+            <p>Understanding legal protections for food donors and liability information.</p>
+            <button class="btn">⬇️ Download Resource</button>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <div class="flex justify-between mb-2">
+              <h4>Tax Benefits for Food Donations</h4>
+              <span class="badge">Tax Guide</span>
+            </div>
+            <p>How businesses can benefit from tax deductions when donating food.</p>
+            <button class="btn">⬇️ Download Resource</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community Support -->
+      <div class="card">
+        <div class="flex items-center mb-4">
+          <div class="icon-circle bg-gradient">❤️</div>
+          <h3 style="margin-left:0.75rem;">Community Support</h3>
+        </div>
+        <div class="space-y-4">
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <div class="flex justify-between mb-2">
+              <h4>Local Food Banks Directory</h4>
+              <span class="badge">Directory</span>
+            </div>
+            <p>Complete directory of food banks and pantries in your area.</p>
+            <button class="btn">⬇️ Download Resource</button>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <div class="flex justify-between mb-2">
+              <h4>Emergency Food Assistance</h4>
+              <span class="badge">Emergency Guide</span>
+            </div>
+            <p>Immediate help resources for families experiencing food emergencies.</p>
+            <button class="btn">⬇️ Download Resource</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency Contacts -->
+  <section class="section" style="background:#FEF9C3;">
+    <div class="text-center mb-12">
+      <h2>Emergency Contacts</h2>
+      <p>Need immediate help? These resources are available 24/7</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card text-center">
+        <div class="icon-circle bg-gradient mx-auto mb-4">📞</div>
+        <h3>National Hunger Hotline</h3>
+        <p class="text-red-600 font-bold">1-800-FOOD-HELP</p>
+        <p>24/7 assistance for food emergencies</p>
+      </div>
+      <div class="card text-center">
+        <div class="icon-circle bg-gradient mx-auto mb-4">✉️</div>
+        <h3>ZeroWaste Support</h3>
+        <p class="text-red-600 font-bold">1-800-ZERO-WASTE</p>
+        <p>help@zerowaste.com</p>
+        <p>Platform support and assistance</p>
+      </div>
+      <div class="card text-center">
+        <div class="icon-circle bg-gradient mx-auto mb-4">📍</div>
+        <h3>Local Food Bank Network</h3>
+        <p class="text-red-600 font-bold">211</p>
+        <p>Connect to local food assistance programs</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-white">
+    <div class="text-center mb-12">
+      <h2>Frequently Asked Questions</h2>
+      <p>Common questions about using ZeroWaste</p>
+    </div>
+    <div class="space-y-6 max-w-4xl mx-auto">
+      <div class="card p-6">
+        <h3>How do I know if donated food is safe to eat?</h3>
+        <p>All food donors on our platform are verified businesses that follow food safety protocols. We also provide guidelines on how to assess food quality and safety when picking up donations.</p>
+      </div>
+      <div class="card p-6">
+        <h3>What types of food can be donated?</h3>
+        <p>Restaurants and food businesses can donate prepared foods, baked goods, fresh produce, and packaged items that are still within their safe consumption period.</p>
+      </div>
+      <div class="card p-6">
+        <h3>Are there any costs involved?</h3>
+        <p>ZeroWaste is completely free for both food recipients and donors. Our mission is to make food assistance accessible to everyone in the community.</p>
+      </div>
+      <div class="card p-6">
+        <h3>How quickly should I pick up donated food?</h3>
+        <p>For food safety, we recommend picking up donated food within 2 hours of posting. Our app will send notifications to ensure timely pickup.</p>
+      </div>
+      <div class="card p-6">
+        <h3>Can I donate non-food items?</h3>
+        <p>Currently, our platform focuses specifically on food donations. However, we're exploring options to expand to other essential items in the future.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nutrition Tips -->
+  <section class="section" style="background:#DCFCE7;">
+    <div class="text-center mb-12">
+      <h2>Nutrition Tips</h2>
+      <p>Make the most of your food donations with these healthy eating tips</p>
+    </div>
+    <div class="card max-w-4xl mx-auto p-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="flex items-start">
+          <div class="number-circle">1</div>
+          <p>Look for donations that include fresh fruits and vegetables</p>
+        </div>
+        <div class="flex items-start">
+          <div class="number-circle">2</div>
+          <p>Balance meals with proteins, grains, and dairy when possible</p>
+        </div>
+        <div class="flex items-start">
+          <div class="number-circle">3</div>
+          <p>Store perishable items properly to maintain nutrition and safety</p>
+        </div>
+        <div class="flex items-start">
+          <div class="number-circle">4</div>
+          <p>Don't hesitate to ask donors about ingredients if you have allergies</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hours and Availability -->
+  <section class="section bg-gray text-white text-center">
+    <h2>Support Hours</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+      <div>
+        <h3>Platform Support</h3>
+        <p>Monday - Friday: 8am - 8pm</p>
+        <p>Weekend: 10am - 6pm</p>
+      </div>
+      <div>
+        <h3>Emergency Assistance</h3>
+        <p>Available 24/7</p>
+        <p>Call 1-800-FOOD-HELP</p>
+      </div>
+      <div>
+        <h3>Food Donations</h3>
+        <p>Posted throughout the day</p>
+        <p>Peak hours: 2pm - 6pm</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
